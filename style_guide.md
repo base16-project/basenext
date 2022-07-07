@@ -1,6 +1,6 @@
 # Base17 Style & Scheme Guide
 
-**Version 0.9.1-beta**
+**Version 0.5.0-beta**
 
 *The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD",
 "SHOULD NOT", "RECOMMENDED",  "MAY", and "OPTIONAL" in this document are to be
@@ -9,7 +9,7 @@ interpreted as described in [RFC 2119](https://datatracker.ietf.org/doc/html/rfc
 <!-- MarkdownTOC levels="2,3,4" autolink="true" -->
 
 - [The Palette](#the-palette)
-- [The Default Slots](#the-default-slots)
+- [The Default 16 Slots](#the-default-16-slots)
   - [Customize Syntax Highlighting](#customize-syntax-highlighting)
   - [Customizing Syntax Highlighting](#customizing-syntax-highlighting)
   - [Slot Values](#slot-values)
@@ -51,28 +51,29 @@ To upgrade a scheme from Base16 just start using Base17 features then build usin
 - Slots `base08` to `base0F` typically hold individual accent colors used for syntax highlighting (types, operators, classes, variables, etc.)
 
 
-## The Default Slots
+## The Default 16 Slots
 
-The default slots, their intended usage, and the built-in slots they fill by default.
+The default slots, their intended use, and the built-in slots they fill by default (their semantic meaning).
 
 
 | Slot       | Usage  | Fills slot by default... |
 | :-- | :-- | :-- |
-| _base00_ | Default Background  | `background` |
-| _base01_ | Lighter Background | `bg_lighter`, `folding_marks`, `line_numbers` |
-| _base03_ | Comments, Invisibles, Line Highlighting | `bg_brightest`, `comment`, `invisible`, `line_highlighting` |
-| _base04_ | Dark Foreground (Used for status bars) | `fg_darker`, `dark_status_bar` |
-| _base05_ | Default Foreground, Caret, Delimiters, Operators | `foreground`, `caret`, `delimiter`, `operator` |
-| _base06_ | Light Foreground | `fg_lighter` |
-| _base07_ | Lightest Foreground | `fg_brightest` |
-| _base08_ | Variables, XML Tags, Markup Link Text, Markup Lists, Diff Deleted| `variable`, `xml_tag`, `markup_link_text`, `markup_list`, `diff_deleted` |
-| _base09_ | Integers, Boolean, Constants, XML Attributes, Markup Link Url| `literal`, `constant`, `xml_attribute`, `markup_link_url` |
-| _base0A_ | Classes, Markup Bold, Search Text Background| `name_class`, `markup_bold` `bg_search_text` |
-| _base0B_ | Strings, Inherited Class, Markup Code, Diff Inserted| `string`, `name_class_inherited`, `markup_code`, `diff_inserted` |
-| _base0C_ | Support, Regular Expressions, Escape Characters, Markup Quotes| `support`, `regex`, `escape`, `markup_quotes` |
-| _base0D_ | Functions, Methods, Attribute IDs, Headings| `function`, `attribute_id`, `heading` |
-| _base0E_ | Keywords, Storage, Selector, Markup Italic, Diff Changed| `keyword`, `storage`, `selector`, `markup_italic`, `diff_changed` |
-| _base0F_ | Deprecated, Opening/Closing Embedded Language Tags, e.g. `<?php ?>` | `deprecated`, `embed_tags` |
+| _base00_ | Default BG  | `background` |
+| _base01_ | Lighter BG | `bg_lighter`, `folding_marks`, `line_numbers`, `light_status_bar` |
+| _base02_ | ????? BG | `bg_selection`, `bg_?????` |
+| _base03_ | Brighest BG | `bg_brightest`, `comment`, `invisible`, `line_highlighting` |
+| _base04_ | Dark FG | `fg_darker`, `dark_status_bar` |
+| _base05_ | Default FG | `foreground`, `caret`, `delimiter`, `operator` |
+| _base06_ | Light FG | `fg_lighter` |
+| _base07_ | Brightest FG | `fg_brightest` |
+| _base08_ | Syntax | `variable`, `xml_tag`, `markup_link_text`, `markup_list`, `diff_deleted` |
+| _base09_ | Syntax | `literal`, `constant`, `xml_attribute`, `markup_link_url` |
+| _base0A_ | Syntax | `name_class`, `markup_bold`, `bg_search_text` |
+| _base0B_ | Syntax | `string`, `name_class_inherited`, `markup_code`, `diff_inserted` |
+| _base0C_ | Syntax | `support`, `regex`, `escape`, `markup_quotes` |
+| _base0D_ | Syntax | `function`, `attribute_id`, `heading` |
+| _base0E_ | Syntax | `keyword`, `storage`, `selector`, `markup_italic`, `diff_changed` |
+| _base0F_ | Syntax | `deprecated`, `embed_tags` |
 
 <!--
 - **base00** - Default Background
@@ -114,7 +115,7 @@ The default slots, their intended usage, and the built-in slots they fill by def
 
 **Note:**
 
-- every scheme MUST assign all default Base slots
+- every scheme MUST assign all 16 default Base slots
 - older templates may only support the default slots (named slots will be ignored)
 - variable slots may always be used to organize your scheme (even with older templates)
 
