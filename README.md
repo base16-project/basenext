@@ -5,7 +5,7 @@ This repository exists to allow rapid progress to be made on the Base17 style gu
 
 ### Motivation
 
-[Base16](https://github.com/chriskempson/base16) is pretty darn awesome at what it's managed to accomplish, but it's not without fault.  Base17 aims to be a forward-compatible evolution of Base16 that solves most of the known issues.
+[Base16](https://github.com/chriskempson/base16) is pretty darn awesome at what it's managed to accomplish, but it's not without fault.  Base17 aims to be a forward-compatible evolution of Base16 that solves some of the known issues.
 
 
 #### Compared to Base16

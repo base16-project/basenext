@@ -30,7 +30,7 @@ The Base17 palette consists of an 8 shade gradient ramp for foreground/backgroun
 
 By default, similar language constructs are assigned to a single color "slot". For example literals (numbers, booleans, etc) by default are assigned to slot `base09`.
 
-Describing syntax highlighting can be tricky - please see [base16-vim](https://github.com/base16-project/base16-vim/) and [base16-emacs](https://github.com/base16-project/base16-emacs/) for some real-life examples. It should be noted that each editor will have it's own idiosyncrasies due to having different syntax highlighting engines.
+Describing syntax highlighting can be tricky - please see [base17-vim](https://github.com/base16-project/base16-vim/), [base17-emacs](https://github.com/base16-project/base16-emacs/), and [base17-highlightjs]() for some real-life examples. It should be noted that each editor will have it's own idiosyncrasies due to having different syntax highlighting engines.
 
 **Compatibility**
 
@@ -275,6 +275,8 @@ _Base17 has no default scheme and explicitly discourages designers from trying t
 
 
 #### Semantic Pairing
+
+Base16 calls this "Rigid syntax highlighting" and lists it as a benefit.  It's definitely rigid.  This spec disagrees strongly that it's a benefit.
 
 With Base16 `base08` is used for both variables and diff deleted.  If you want deleted lines in diffs to be colored red you're stuck with red variables also, nothing you can do.  [Base16 themes include a lot of red variables.](https://github.com/base16-project/base16/issues/10)  This also entirely breaks the fidelity of some themes (like Nord) that are ported from richer ecosystems without such restrictions.
 
