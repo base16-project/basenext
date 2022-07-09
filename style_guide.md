@@ -1,6 +1,5 @@
-# Base17 Style & Scheme Guide
-
-**Version 0.5.0-beta**
+# Base17 Style System
+**Version 0.9-beta**
 
 *The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD",
 "SHOULD NOT", "RECOMMENDED",  "MAY", and "OPTIONAL" in this document are to be
