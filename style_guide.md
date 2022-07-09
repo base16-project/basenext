@@ -10,10 +10,8 @@ interpreted as described in [RFC 2119](https://datatracker.ietf.org/doc/html/rfc
 
 - [The Palette](#the-palette)
 - [The Default 16 Slots](#the-default-16-slots)
+  - [More about Slots](#more-about-slots)
   - [Customize Syntax Highlighting](#customize-syntax-highlighting)
-  - [Customizing Syntax Highlighting](#customizing-syntax-highlighting)
-  - [Slot Values](#slot-values)
-  - [Variable Slots](#variable-slots)
 - [Addendums](#addendums)
   - [You are still limited to a max of 16 colors.](#you-are-still-limited-to-a-max-of-16-colors)
   - [Issues that Base17 attempts to solve](#issues-that-base17-attempts-to-solve)
@@ -21,14 +19,15 @@ interpreted as described in [RFC 2119](https://datatracker.ietf.org/doc/html/rfc
     - [Semantic Pairing](#semantic-pairing)
 - [Examples](#examples)
   - [skittles.yaml](#skittlesyaml)
+- [How to Upgrade from Base16](#how-to-upgrade-from-base16)
 
 <!-- /MarkdownTOC -->
 
 ## The Palette
 
-The Base17 palette consists of an 8 shade gradient ramp for foreground/background/UI plus 8 accent colors for syntax highlighting.  The eight accent colors for a Base17 scheme should strive to be pleasing and visualy distinctive. Designers may chose any accent colours they desire - in any order. Slots in the palette _purposely_ do not correspond to particular hues. The same hues across many themes results in [sameness](#sameness).
+The Base17 palette consists of 16 colors - an 8 shade gradient ramp for foreground/background and UI plus 8 accent colors for syntax highlighting.  The accent colors for a Base17 scheme should strive to be pleasing and visualy distinctive. Designers may chose any accent colours they desire - in any order. Slots in the palette _purposely_ do not correspond to particular hues. Schemes that all share similar hues results in [sameness](#sameness).
 
-By default, similar language constructs are assigned to a single color "slot". For example literals (numbers, booleans, etc) by default are assigned to slot `base09`.
+When syntax highlighting certain language constructs are attached to a particular palette "slot" by default (see the table below). For example literals (numbers, booleans, etc) are attached to slot `base09` and will inherit their color from that slot. This inheritance can be changed using [schema:override](./schema_spec.md#override).
 
 Describing syntax highlighting can be tricky - please see [base17-vim](https://github.com/base16-project/base16-vim/), [base17-emacs](https://github.com/base16-project/base16-emacs/), and [base17-highlightjs]() for some real-life examples. It should be noted that each editor will have it's own idiosyncrasies due to having different syntax highlighting engines.
 
@@ -36,12 +35,9 @@ Describing syntax highlighting can be tricky - please see [base17-vim](https://g
 
 Base17 is an evolution of [Base16 v0.2 spec](https://github.com/chriskempson/base16/blob/main/styling.md).  It still includes 16 colors.
 
-- All Base16 v0.2 schemes are forwards compatible with Base17.
-  - _Every Base16 scheme is a fully valid Base17 scheme._
-- Base17 schemes may not be backwards compatible with Base16.
-
-To upgrade a scheme from Base16 just start using Base17 features then build using a Base17 aware builder.
-
+- Base16 schemes are not compatible Base17.
+- Base16 schemes take only a moment to upgrade to Base17. See [How to Upgrade](#upgrade).
+- Modern builders can build a mixed folder of Base16 and Base17 schemes without issue.
 
 **Guidelines**
 
@@ -56,7 +52,7 @@ To upgrade a scheme from Base16 just start using Base17 features then build usin
 The default slots, their intended use, and the built-in slots they fill by default (their semantic meaning).
 
 
-| Slot       | Usage  | Fills slot by default... |
+| Slot       | Usage  | Fills named slots by default... |
 | :-- | :-- | :-- |
 | _base00_ | Default BG  | `background` |
 | _base01_ | Lighter BG | `bg_lighter`, `folding_marks`, `line_numbers`, `light_status_bar` |
@@ -75,49 +71,14 @@ The default slots, their intended use, and the built-in slots they fill by defau
 | _base0E_ | Syntax | `keyword`, `storage`, `selector`, `markup_italic`, `diff_changed` |
 | _base0F_ | Syntax | `deprecated`, `embed_tags` |
 
-<!--
-- **base00** - Default Background
-  - `background`
-- **base01** - Lighter Background (Used for status bars, line number and folding marks)
-  - `bg_lighter`, `folding_marks`
-- **base02** - Selection Background
-  - `bg_selection`, `bg_????`
-- **base03** - Comments, Invisibles, Line Highlighting
-	- `comment`, `invisible`, `line_highlighting`
-- **base04** - Dark Foreground (Used for status bars)
-  - `fg_darker`, `dark_status_bar`
-- **base05** - Default Foreground, Caret, Delimiters, Operators
-  - `foreground`, `caret`, `delimiter`, `operator`
-- **base06** - Light Foreground
-	- `fg_lighter`
-- **base07** - Lightest Foreground
-	- `fg_brightest`
 
-
-
-- **base08** - Variables, XML Tags, Markup Link Text, Markup Lists, Diff Deleted
-  - `variable`, `xml_tag`, `markup_link_text`, `markup_list`, `diff_deleted`
-- **base09** - Integers, Boolean, Constants, XML Attributes, Markup Link Url
-	- `literal`, `constant`, `xml_attribute`, `markup_link_url`
-- **base0A** - Classes, Markup Bold, Search Text Background
-  - `name_class`, `markup_bold` `bg_search_text`
-- **base0B** - Strings, Inherited Class, Markup Code, Diff Inserted
-  - `string`, `name_class_inherited`, `markup_code`, `diff_inserted`
-- **base0C** - Support, Regular Expressions, Escape Characters, Markup Quotes
-  - `support`, `regex`, `escape`, `markup_quotes`
-- **base0D** - Functions, Methods, Attribute IDs, Headings
-	- `function`, `attribute_id`, `heading`
-- **base0E** - Keywords, Storage, Selector, Markup Italic, Diff Changed
-	- `keyword`, `storage`, `selector`, `markup_italic`, `diff_changed`
-- **base0F** - Deprecated, Opening/Closing Embedded Language Tags, e.g. `<?php ?>`
-
--->
-
-**Note:**
+### More about Slots
 
 - every scheme MUST assign all 16 default Base slots
-- older templates may only support the default slots (named slots will be ignored)
-- variable slots may always be used to organize your scheme (even with older templates)
+- older templates may only support the default slots (named could be ignored)
+- variable slots may always be used (even with older templates)
+- the value of a slot may be a literal hex color value or a reference to another slot.  See the [schema:slot values](./scheme_spec.md#slot_values).
+- _variable slots_ make schemes easier to author and maintain.  See the [schema:variable slots](./scheme_spec.md#variable_slots).
 
 
 ### Customize Syntax Highlighting
@@ -138,7 +99,6 @@ Now _only deleted diffs will appear red_, the other uses of base08 will be blue.
 
 
 <!--
-### Customizing Syntax Highlighting
 
 Schemes MAY customize highlighting to precisely fine tune how their palette will be applied inside applications.  For example if you don't desire variable names and xml tags to share the same coloration (slot `base08`) then you can use the `name_variable` and `xml_tag` built-in slots to specify different colors.
 -->
@@ -212,48 +172,6 @@ Schemes MAY customize highlighting to precisely fine tune how their palette will
 
 -->
 
-### Slot Values
-
-The value of a slot may be a literal hex color value or a reference to another slot.
-
- ```yaml
-$red: "#ff0000"
-
-constant: $red
-string: "constant"
-number: "constant"
-boolean: "constant"
-diff_deleted: $red
-
-base05: "#fe0000"
-```
-
-- first we label the color `$red` with a variable
-  - it's value is the literal color `#ff0000`
-- we declare constants are red
-- we declare strings, numbers, and booleans should be highlighted as constants
-- we declare `diff_deleted` should be highlighted as `$red`
-- we set `base05` to the literal hex color "#fe0000"
-
-
-Note: Ordering does not matter, you can refer to a slot before that slot has been defined.
-
-
-### Variable Slots
-
-Variable slots make schemes easier to author and maintain. For example when your hues are visually distinct it's often helpful to reference them in your scheme by name:
-
-```yaml
-scheme: "Fun Colors"
-$lightsaber_purple: "#FE00EF"
-$granny_smith_red: "#EE1122"
-$mr_blue_sky: "#336699"
-base0b: $lightsaber_purple
-base0c: $granny_smith_red
-base0d: $mr_blue_sky
-```
-
-- all variable slot names must start with `$`
 
 
 ## Addendums
@@ -288,8 +206,9 @@ _Base17 allows you to override any default pairings and easily define two colors
 ### skittles.yaml
 
 ```yaml
-scheme: "Skittles (dark)"
+name: "Skittles (dark)"
 author: "Josh Goebel"
+description: "Looks as good as it tastes."
 
 variables: # skittles
   $lemon: "#D7CA04"
@@ -303,12 +222,12 @@ variables: # skittles
 
 # adjust the default highlighting just a bit
 # make sure diff is always green/red
-customize:
+override:
   diff_inserted: $green_apple
   diff_changed: fg_darker
   diff_deleted: $strawberry
 
-default: # bg/fg/ui
+palette: # bg/fg/ui
   base00: "#1C2023" # ----
   base01: "#393F45" # ---
   base02: "#565E65" # --
@@ -326,4 +245,39 @@ default: # bg/fg/ui
   base0D: $raspberry
   base0E: $strawberry_starfruit
   base0F: $grape
+```
+
+## How to Upgrade from Base16
+
+- rename the `scheme:` key to `name:`
+- add a `system:` key set to `base17`
+- add an optional `description:` entry
+- move all your `base00` keys under the new `palette` key
+
+
+**Base16 (before):**
+
+```yaml
+scheme: "Ashes"
+author: "Jannik Siebert (https://github.com/janniks)"
+base00: "1C2023" # ----
+base01: "393F45" # ---
+base02: "565E65" # --
+base03: "747C84" # -
+# etc...
+```
+
+**Base17 (after):**
+
+```yaml
+name: "Ashes"
+description: "you can now add a description"
+author: "Jannik Siebert (https://github.com/janniks)"
+system: "base17"
+palette:
+  base00: "1C2023" # ----
+  base01: "393F45" # ---
+  base02: "565E65" # --
+  base03: "747C84" # -
+  # etc...
 ```
