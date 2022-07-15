@@ -11,6 +11,8 @@ interpreted as described in [RFC 2119](https://datatracker.ietf.org/doc/html/rfc
 - [The Default 16 Slots](#the-default-16-slots)
   - [More about Slots](#more-about-slots)
   - [Customize Syntax Highlighting](#customize-syntax-highlighting)
+- [Compatibility with Base16](#compatibility-with-base16)
+  - [How to Upgrade from Base16](#how-to-upgrade-from-base16)
 - [Addendums](#addendums)
   - [You are still limited to a max of 16 colors.](#you-are-still-limited-to-a-max-of-16-colors)
   - [Issues that Base17 attempts to solve](#issues-that-base17-attempts-to-solve)
@@ -18,9 +20,9 @@ interpreted as described in [RFC 2119](https://datatracker.ietf.org/doc/html/rfc
     - [Semantic Pairing](#semantic-pairing)
 - [Examples](#examples)
   - [skittles.yaml](#skittlesyaml)
-- [How to Upgrade from Base16](#how-to-upgrade-from-base16)
 
 <!-- /MarkdownTOC -->
+
 
 ## The Palette
 
@@ -30,13 +32,7 @@ When syntax highlighting certain language constructs are attached to a particula
 
 Describing syntax highlighting can be tricky - please see [base17-vim](https://github.com/base16-project/base16-vim/), [base17-emacs](https://github.com/base16-project/base16-emacs/), and [base17-highlightjs]() for some real-life examples. It should be noted that each editor will have it's own idiosyncrasies due to having different syntax highlighting engines.
 
-**Compatibility**
 
-Base17 is an evolution of [Base16 v0.2 spec](https://github.com/chriskempson/base16/blob/main/styling.md).  It still includes 16 colors.
-
-- Base16 schemes are not compatible Base17.
-- Base16 schemes take only a moment to upgrade to Base17. See [How to Upgrade](#upgrade).
-- Modern builders can build a mixed folder of Base16 and Base17 schemes without issue.
 
 **Guidelines**
 
@@ -95,6 +91,58 @@ diff_deleted: $red
 ```
 
 Now _only deleted diffs will appear red_, the other uses of base08 will be blue.
+
+
+## Compatibility with Base16
+
+Base17 is an evolution of Chris's [Base16 v0.2 spec](https://github.com/chriskempson/base16/blob/main/styling.md).  It still includes 16 colors.
+
+- Base16 schemes are not compatible Base17.
+- Base16 schemes take only a moment to upgrade to Base17. See [How to Upgrade](#upgrade).
+- Modern builders can often build a mixed folder of Base16 and Base17 schemes without issue.
+
+**Changes**
+
+- Adds [description](./schema_spec.md#metadata) metadata
+- Adds [system](./schema_spec.md#metadata) metadata
+- Adds [semantic slots](./schema_spec.md#semantic)
+- Adds [variables](./schema_spec.md#variables)
+- Moves palette data into [palette key](./schema_spec.md#palette)
+
+### How to Upgrade from Base16
+
+- rename the `scheme:` key to `name:`
+- add a `system:` key set to `base17`
+- add an optional `description:` entry
+- move all your `base00` keys under the new `palette` key
+
+
+**Base16 (before):**
+
+```yaml
+scheme: "Ashes"
+author: "Jannik Siebert (https://github.com/janniks)"
+base00: "1C2023" # ----
+base01: "393F45" # ---
+base02: "565E65" # --
+base03: "747C84" # -
+# etc...
+```
+
+**Base17 (after):**
+
+```yaml
+name: "Ashes"
+description: "you can now add a description"
+author: "Jannik Siebert (https://github.com/janniks)"
+system: "base17"
+palette:
+  base00: "1C2023" # ----
+  base01: "393F45" # ---
+  base02: "565E65" # --
+  base03: "747C84" # -
+  # etc...
+```
 
 
 <!--
@@ -246,37 +294,3 @@ palette: # bg/fg/ui
   base0F: $grape
 ```
 
-## How to Upgrade from Base16
-
-- rename the `scheme:` key to `name:`
-- add a `system:` key set to `base17`
-- add an optional `description:` entry
-- move all your `base00` keys under the new `palette` key
-
-
-**Base16 (before):**
-
-```yaml
-scheme: "Ashes"
-author: "Jannik Siebert (https://github.com/janniks)"
-base00: "1C2023" # ----
-base01: "393F45" # ---
-base02: "565E65" # --
-base03: "747C84" # -
-# etc...
-```
-
-**Base17 (after):**
-
-```yaml
-name: "Ashes"
-description: "you can now add a description"
-author: "Jannik Siebert (https://github.com/janniks)"
-system: "base17"
-palette:
-  base00: "1C2023" # ----
-  base01: "393F45" # ---
-  base02: "565E65" # --
-  base03: "747C84" # -
-  # etc...
-```
