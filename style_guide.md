@@ -236,7 +236,7 @@ Base16 is pretty darn awesome at what it's managed to accomplish, but it's not w
 
 Too often Base16 hues [stick frustratingly close the default scheme hues](https://github.com/base16-project/base16/issues/10#issuecomment-1171593477).  We imagine this may be because many designers start with the default palette as a base. This could also be influenced by semantic pairing.  The end result: a lot of themes look visually similar and there is less diversity in Base16 schemes than you find in other theming ecosystems.
 
-_Base17 has no default scheme and explicitly discourages designers from trying to hue match other themes._
+_Base17 has no default scheme and explicitly discourages designers from trying to hue match other scheme palettes._  Semantic slots may hue align occasionally due to common conventions (using red for diff deleted, etc).  This is OK.
 
 
 #### Semantic Pairing
