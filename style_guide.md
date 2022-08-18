@@ -1,4 +1,4 @@
-# Base17 Style System
+# BaseNext Style System
 **Version 0.9-beta**
 
 *The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD",
@@ -15,7 +15,7 @@ interpreted as described in [RFC 2119](https://datatracker.ietf.org/doc/html/rfc
   - [How to Upgrade from Base16](#how-to-upgrade-from-base16)
 - [Addendums](#addendums)
   - [You are still limited to a max of 16 colors.](#you-are-still-limited-to-a-max-of-16-colors)
-  - [Issues that Base17 attempts to solve](#issues-that-base17-attempts-to-solve)
+  - [Issues that BaseNext attempts to solve](#issues-that-basenext-attempts-to-solve)
     - [Sameness](#sameness)
     - [Semantic Pairing](#semantic-pairing)
 - [Examples](#examples)
@@ -26,11 +26,11 @@ interpreted as described in [RFC 2119](https://datatracker.ietf.org/doc/html/rfc
 
 ## The Palette
 
-The Base17 palette consists of 16 colors - an 8 shade gradient ramp for foreground/background and UI plus 8 accent colors for syntax highlighting.  The accent colors for a Base17 scheme should strive to be pleasing and visualy distinctive. Designers may chose any accent colours they desire - in any order. Slots in the palette _purposely_ do not correspond to particular hues. Schemes that all share similar hues results in [sameness](#sameness).
+The BaseNext palette consists of 16 colors - an 8 shade gradient ramp for foreground/background and UI plus 8 accent colors for syntax highlighting.  The accent colors for a BaseNext scheme should strive to be pleasing and visualy distinctive. Designers may chose any accent colours they desire - in any order. Slots in the palette _purposely_ do not correspond to particular hues. Schemes that all share similar hues results in [sameness](#sameness).
 
 When syntax highlighting certain language constructs are attached to a particular palette "slot" by default (see the table below). For example literals (numbers, booleans, etc) are attached to slot `base09` and will inherit their color from that slot. This inheritance can be changed using [schema:override](./schema_spec.md#override).
 
-Describing syntax highlighting can be tricky - please see [base17-vim](https://github.com/base16-project/base16-vim/), [base17-emacs](https://github.com/base16-project/base16-emacs/), and [base17-highlightjs]() for some real-life examples. It should be noted that each editor will have it's own idiosyncrasies due to having different syntax highlighting engines.
+Describing syntax highlighting can be tricky - please see [basenext-highlightjs]() for some real-life examples. It should be noted that each editor will have it's own idiosyncrasies due to having different syntax highlighting engines.
 
 
 
@@ -95,11 +95,11 @@ Now _only deleted diffs will appear red_, the other uses of base08 will be blue.
 
 ## Compatibility with Base16
 
-Base17 is an evolution of Chris's [Base16 v0.2 spec](https://github.com/chriskempson/base16/blob/main/styling.md).  It still includes 16 colors.
+BaseNext is an evolution of Chris's [Base16 v0.2 spec](https://github.com/chriskempson/base16/blob/main/styling.md).  It still includes 16 colors.
 
-- Base16 schemes are not compatible Base17.
-- Base16 schemes take only a moment to upgrade to Base17. See [How to Upgrade](#upgrade).
-- Modern builders can often build a mixed folder of Base16 and Base17 schemes without issue.
+- Base16 schemes are not compatible BaseNext.
+- Base16 schemes take only a moment to upgrade to BaseNext. See [How to Upgrade](#upgrade).
+- Modern builders can often build a mixed folder of Base16 and BaseNext schemes without issue.
 
 **Changes**
 
@@ -112,7 +112,7 @@ Base17 is an evolution of Chris's [Base16 v0.2 spec](https://github.com/chriskem
 ### How to Upgrade from Base16
 
 - rename the `scheme:` key to `name:`
-- add a `system:` key set to `base17`
+- add a `system:` key set to `basenext`
 - add an optional `description:` entry
 - move all your `base00` keys under the new `palette` key
 
@@ -129,13 +129,13 @@ base03: "747C84" # -
 # etc...
 ```
 
-**Base17 (after):**
+**BaseNext (after):**
 
 ```yaml
 name: "Ashes"
 description: "you can now add a description"
 author: "Jannik Siebert (https://github.com/janniks)"
-system: "base17"
+system: "basenext"
 palette:
   base00: "1C2023" # ----
   base01: "393F45" # ---
@@ -228,7 +228,7 @@ Schemes MAY customize highlighting to precisely fine tune how their palette will
 The number of colors per scheme is still limited to 16.  If your scheme uses more than 16 unique hex colors an error will be thrown during the build process.
 
 
-### Issues that Base17 attempts to solve
+### Issues that BaseNext attempts to solve
 
 Base16 is pretty darn awesome at what it's managed to accomplish, but it's not without it's issues.
 
@@ -236,7 +236,7 @@ Base16 is pretty darn awesome at what it's managed to accomplish, but it's not w
 
 Too often Base16 hues [stick frustratingly close the default scheme hues](https://github.com/base16-project/base16/issues/10#issuecomment-1171593477).  We imagine this may be because many designers start with the default palette as a base. This could also be influenced by semantic pairing.  The end result: a lot of themes look visually similar and there is less diversity in Base16 schemes than you find in other theming ecosystems.
 
-_Base17 has no default scheme and explicitly discourages designers from trying to hue match other scheme palettes._  Semantic slots may hue align occasionally due to common conventions (using red for diff deleted, etc).  This is OK.
+_BaseNext has no default scheme and explicitly discourages designers from trying to hue match other scheme palettes._  Semantic slots may hue align occasionally due to common conventions (using red for diff deleted, etc).  This is OK.
 
 
 #### Semantic Pairing
@@ -245,7 +245,7 @@ Base16 calls this "Rigid syntax highlighting" and lists it as a benefit.  It's d
 
 With Base16 `base08` is used for both variables and diff deleted.  If you want deleted lines in diffs to be colored red you're stuck with red variables also, nothing you can do.  [Base16 themes include a lot of red variables.](https://github.com/base16-project/base16/issues/10)  This also entirely breaks the fidelity of some themes (like Nord) that are ported from richer ecosystems without such restrictions.
 
-_Base17 allows you to override any default pairings and easily define two colors._ Variables blue, diff deleted red, you got it.
+_BaseNext allows you to override any default pairings and easily define two colors._ Variables blue, diff deleted red, you got it.
 
 
 ## Examples

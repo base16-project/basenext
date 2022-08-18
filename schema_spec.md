@@ -1,6 +1,6 @@
 # BaseX Scheme Guide
 
-An example Base17 scheme:
+An example BaseNext scheme:
 
 ### skittles.yaml
 
