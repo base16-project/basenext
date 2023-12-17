@@ -1,3 +1,7 @@
+# Deprecation Notice
+
+After forking from the original base16, we tried to decide what we wanted the "next generation" version of base16 to look like. Base17 was one of the early iterations. While we may end up going in this direction in the future, we have (currently) decided against this specific iteration. Over time, we plan to add a number of features to our "common scheme format" which would expand it to work like base17, but building it out iteratively rather than all at once.
+
 # BaseNext DRAFT Proposal <img alt="Color wheel" src="./color_wheel.png" width="100" align="right" style="padding-top:0.6rem;">
 
 This repository exists to allow rapid progress to be made on the BaseNext style guide... it may later be merged back into another central repo (or not).
